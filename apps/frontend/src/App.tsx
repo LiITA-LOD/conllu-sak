@@ -10,7 +10,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import type React from 'react';
 import { useState } from 'react';
 import FloatingLogo from './components/FloatingLogo';
-// import Main from './components/Main';
+import Main from './components/Main';
 import NavigationLinks from './components/NavigationLinks';
 import ThemeSwitcher from './components/ThemeSwitcher';
 import { darkTheme, lightTheme } from './themes';
@@ -51,7 +51,7 @@ const App: React.FC = () => {
         </AppBar>
 
         <Container component="main" sx={{ flex: 1, py: 4, maxWidth: 'lg' }}>
-          {/* <Main /> */}
+          <Main />
         </Container>
       </Box>
     </ThemeProvider>
