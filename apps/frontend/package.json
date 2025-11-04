@@ -24,6 +24,7 @@
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^7.2.0",
     "@mui/material": "^7.2.0",
+    "@zip.js/zip.js": "^2.8.8",
     "install": "^0.13.0",
     "liita-textlinker-frontend": "github:LiITA-LOD/text-linker#dec934943792909722ca1b3de6370daee8d88fec&path:apps/frontend",
     "react": "^19.1.0",
