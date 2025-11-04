@@ -1,6 +1,7 @@
 import {
   Delete as DeleteIcon,
   DragIndicator as DragIndicatorIcon,
+  Sort as SortIcon,
   Upload as UploadIcon,
 } from '@mui/icons-material';
 import {
@@ -129,6 +130,13 @@ const FileUpload: React.FC<FileUploadProps> = ({
     onFilesChange(uploadedFiles.filter((file) => file.id !== id));
   };
 
+  const handleSortAlphabetically = () => {
+    const sorted = [...uploadedFiles].sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
+    onFilesChange(sorted);
+  };
+
   return (
     <Box sx={{ mb: 4 }}>
       {uploadedFiles.length > 0 && (
@@ -155,23 +163,33 @@ const FileUpload: React.FC<FileUploadProps> = ({
         <Typography variant="h6">
           Uploaded Files: {uploadedFiles.length}
         </Typography>
-        <input
-          accept=".conllu"
-          style={{ display: 'none' }}
-          id="file-upload"
-          multiple
-          type="file"
-          onChange={handleFileUpload}
-        />
-        <label htmlFor="file-upload">
+        <Box sx={{ display: 'flex', gap: 2 }}>
           <Button
-            variant="contained"
-            component="span"
-            startIcon={<UploadIcon />}
+            variant="outlined"
+            startIcon={<SortIcon />}
+            onClick={handleSortAlphabetically}
+            disabled={uploadedFiles.length < 2}
           >
-            Upload Files
+            Sort Alphabetically
           </Button>
-        </label>
+          <input
+            accept=".conllu"
+            style={{ display: 'none' }}
+            id="file-upload"
+            multiple
+            type="file"
+            onChange={handleFileUpload}
+          />
+          <label htmlFor="file-upload">
+            <Button
+              variant="contained"
+              component="span"
+              startIcon={<UploadIcon />}
+            >
+              Upload Files
+            </Button>
+          </label>
+        </Box>
       </Box>
       <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
         Select multiple files to upload. You can drag and drop to reorder
