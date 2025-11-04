@@ -108,7 +108,7 @@ const Joiner: React.FC = () => {
             minWidth: 200,
           }}
         >
-          Download combined CoNLL-U
+          Download CoNLL-U
         </Button>
       </Box>
     </Box>

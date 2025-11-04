@@ -274,11 +274,6 @@ const Slicer: React.FC = () => {
         >
           Download ZIP
         </Button>
-        {!selectedFile && (
-          <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-            Upload a file to enable slicing
-          </Typography>
-        )}
       </Box>
     </Box>
   );
