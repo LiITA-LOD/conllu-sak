@@ -20,7 +20,7 @@ const Joiner: React.FC = () => {
       const joinedContent = fileContents.join('\n');
 
       // Create and download the file
-      downloadFile(joinedContent, 'joined.conllu');
+      await downloadFile(joinedContent, 'joined.conllu');
     } catch (error) {
       console.error('Error processing files:', error);
     }
@@ -39,7 +39,36 @@ const Joiner: React.FC = () => {
     });
   };
 
-  const downloadFile = (content: string, filename: string) => {
+  const downloadFile = async (content: string, filename: string) => {
+    // Try to use File System Access API for native "Save As" dialog
+    if ('showSaveFilePicker' in window) {
+      try {
+        const handle = await (window as any).showSaveFilePicker({
+          suggestedName: filename,
+          types: [
+            {
+              description: 'CoNLL-U Files',
+              accept: {
+                'text/plain': ['.conllu'],
+              },
+            },
+          ],
+        });
+
+        const writable = await handle.createWritable();
+        await writable.write(content);
+        await writable.close();
+        return;
+      } catch (error: any) {
+        // User cancelled the dialog, abort silently
+        if (error.name !== 'AbortError') {
+          console.error('Error saving file:', error);
+        }
+        return;
+      }
+    }
+
+    // Fallback to programmatic download
     const blob = new Blob([content], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -56,7 +85,8 @@ const Joiner: React.FC = () => {
       <Alert severity="info" sx={{ mb: 4 }}>
         <Typography variant="body2" component="div">
           <strong>Joiner Tool</strong> — Upload multiple CoNLL-U files and combine them into a
-          single file. Files are joined in the order they appear in the list. You can drag and drop to reorder them.
+          single file. Files are joined in the order they appear in the list. You can drag and drop
+          to reorder them, or use the "Sort Alphabetically" button.
         </Typography>
       </Alert>
 
