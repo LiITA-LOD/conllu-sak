@@ -56,7 +56,7 @@ const Joiner: React.FC = () => {
       <Alert severity="info" sx={{ mb: 4 }}>
         <Typography variant="body2" component="div">
           <strong>Joiner Tool</strong> — Upload multiple CoNLL-U files and combine them into a
-          single file. Files are joined in the order they appear in the list.
+          single file. Files are joined in the order they appear in the list. You can drag and drop to reorder them.
         </Typography>
       </Alert>
 
@@ -78,13 +78,8 @@ const Joiner: React.FC = () => {
             minWidth: 200,
           }}
         >
-          Download CoNLL-U
+          Download combined CoNLL-U
         </Button>
-        {uploadedFiles.length === 0 && (
-          <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-            Upload at least one file to enable processing
-          </Typography>
-        )}
       </Box>
     </Box>
   );

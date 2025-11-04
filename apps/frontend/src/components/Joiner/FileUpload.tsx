@@ -191,11 +191,6 @@ const FileUpload: React.FC<FileUploadProps> = ({
           </label>
         </Box>
       </Box>
-      <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-        Select multiple files to upload. You can drag and drop to reorder
-        them.
-      </Typography>
-
     </Box>
   );
 };
