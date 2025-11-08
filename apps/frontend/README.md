@@ -1,4 +1,13 @@
-# Rsbuild project
+# conllu-sak/frontend
+
+## Requirements
+
+It is recommended to use [nix](https://nix.dev/) and [direnv](https://direnv.net/) and let them take care of requirements.
+
+Otherwise, you will need to have the following tools installed:
+
+- [Node.js](https://nodejs.org/) 22
+- [pnpm](https://pnpm.io/)
 
 ## Setup
 
@@ -28,9 +37,3 @@ Preview the production build locally:
 pnpm preview
 ```
 
-## Learn more
-
-To learn more about Rsbuild, check out the following resources:
-
-- [Rsbuild documentation](https://rsbuild.rs) - explore Rsbuild features and APIs.
-- [Rsbuild GitHub repository](https://github.com/web-infra-dev/rsbuild) - your feedback and contributions are welcome!
